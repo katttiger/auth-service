@@ -31,20 +31,17 @@ import java.util.Base64;
 public class SecurityConfig {
 
     private final UserRepository userRepository;
-    private final String jwtIssuer;
     private final String jwtPublicKey;
     private final String jwtPrivateKey;
     private final String jwtKeyId;
 
     public SecurityConfig(
             UserRepository userRepository,
-            @Value("${app.jwt.issuer}") String jwtIssuer,
             @Value("${app.jwt.public-key}") String jwtPublicKey,
             @Value("${app.jwt.private-key}") String jwtPrivateKey,
             @Value("${app.jwt.key-id}") String jwtKeyId
     ) {
         this.userRepository = userRepository;
-        this.jwtIssuer = jwtIssuer;
         this.jwtKeyId = jwtKeyId;
         this.jwtPrivateKey = jwtPrivateKey;
         this.jwtPublicKey = jwtPublicKey;
