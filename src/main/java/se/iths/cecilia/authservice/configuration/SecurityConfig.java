@@ -1,33 +1,28 @@
 package se.iths.cecilia.authservice.configuration;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-
-import java.util.List;
+import se.iths.cecilia.authservice.repository.UserRepository;
 
 @Configuration
 @EnableWebSecurity(debug = true)
 public class SecurityConfig {
 
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+    private final UserRepository userRepository;
+    private final String jwtPublicKey;
+    private final String jwtPrivateKey;
+    private final String jwtKeyId;
 
-        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            List<String> roles = jwt.getClaimAsStringList("roles");
-            if (roles == null) {
-                return List.of();
-            }
-
-            return roles.stream()
-                    .map(role -> (GrantedAuthority) new SimpleGrantedAuthority(role))
-                    .toList();
-
-        });
-        return converter;
+    public SecurityConfig(
+            UserRepository userRepository,
+            @Value("app.jwt.private-key") String jwtPrivateKey,
+            @Value("app.jwt.public-key") String jwtPublicKey,
+            @Value("app.jwt.key-id") String jwtKeyId
+    ) {
+        this.userRepository = userRepository;
+        this.jwtKeyId = jwtKeyId;
+        this.jwtPrivateKey = jwtPrivateKey;
+        this.jwtPublicKey = jwtPublicKey;
     }
 }
