@@ -52,6 +52,8 @@ public class SecurityConfig {
     ) {
         this.userRepository = userRepository;
         this.jwtKeyId = jwtKeyId;
+
+
         this.jwtPrivateKey = jwtPrivateKey;
         this.jwtPublicKey = jwtPublicKey;
     }

@@ -1,4 +1,4 @@
-package se.iths.cecilia.authservice.service;
+package se.iths.cecilia.authservice.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

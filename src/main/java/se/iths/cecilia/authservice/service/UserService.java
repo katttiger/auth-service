@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import se.iths.cecilia.authservice.dto.UserRequestDto;
 import se.iths.cecilia.authservice.dto.UserResponseDto;
 import se.iths.cecilia.authservice.entity.User;
+import se.iths.cecilia.authservice.exceptions.UserNotFoundException;
 import se.iths.cecilia.authservice.mapper.UserMapper;
 import se.iths.cecilia.authservice.repository.UserRepository;
 
