@@ -113,7 +113,7 @@ public class SecurityConfig {
         };
     }
 
-    //TODO: The endpoints in the requiestmatchers will need to be added when they are finished to specify what the person can and cannot do.
+    //TODO: The endpoints in the requestmatchers will need to be added when they are finished to specify what the person can and cannot do.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http.authorizeHttpRequests(auth -> auth
