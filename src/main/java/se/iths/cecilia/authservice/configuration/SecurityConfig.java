@@ -8,7 +8,6 @@ import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -36,8 +35,6 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
-//TODO: When the config is completed, tests must be activated again. They are turned off att the moment to make sure that contextLoad works.
-@Profile("!test")
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -113,15 +110,15 @@ public class SecurityConfig {
         };
     }
 
-    //TODO: The endpoints in the requiestmatchers will need to be added when they are finished to specify what the person can and cannot do.
+    //TODO: The endpoints in the requestmatchers will need to be added when they are finished to specify what the person can and cannot do.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
-                .requestMatchers(HttpMethod.GET).hasAnyRole("ADMIN", "USER")
-                .requestMatchers(HttpMethod.POST).hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/users").permitAll()
+                .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
                 .anyRequest().authenticated()
         ).csrf(AbstractHttpConfigurer::disable);
         return http.build();
