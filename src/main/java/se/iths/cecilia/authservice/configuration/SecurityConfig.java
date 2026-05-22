@@ -59,10 +59,6 @@ public class SecurityConfig {
 
     @Bean
     public KeyPair keyPair() throws Exception {
-
-        System.out.println("Private key " + jwtPrivateKey);
-        System.out.println("Public key " + jwtPublicKey);
-
         if (StringUtils.hasText(jwtPrivateKey) && StringUtils.hasText(jwtPublicKey)) {
             byte[] privateBytes = Base64.getDecoder().decode(jwtPrivateKey);
             byte[] publicBytes = Base64.getDecoder().decode(jwtPublicKey);
