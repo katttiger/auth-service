@@ -59,10 +59,6 @@ public class SecurityConfig {
 
     @Bean
     public KeyPair keyPair() throws Exception {
-
-        System.out.println("Private key " + jwtPrivateKey);
-        System.out.println("Public key " + jwtPublicKey);
-
         if (StringUtils.hasText(jwtPrivateKey) && StringUtils.hasText(jwtPublicKey)) {
             byte[] privateBytes = Base64.getDecoder().decode(jwtPrivateKey);
             byte[] publicBytes = Base64.getDecoder().decode(jwtPublicKey);
@@ -121,7 +117,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/auth/jwks").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
         ).csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
