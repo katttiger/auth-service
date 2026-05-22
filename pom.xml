@@ -10,7 +10,7 @@
     </parent>
     <groupId>se.iths.cecilia</groupId>
     <artifactId>auth-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>auth-service</name>
     <description>auth-service</description>
     <url/>
@@ -154,7 +154,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
         </plugins>
     </build>
 
