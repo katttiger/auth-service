@@ -117,7 +117,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/auth/jwks").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
         ).csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
