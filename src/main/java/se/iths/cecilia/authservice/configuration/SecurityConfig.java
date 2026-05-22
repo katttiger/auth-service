@@ -52,8 +52,6 @@ public class SecurityConfig {
     ) {
         this.userRepository = userRepository;
         this.jwtKeyId = jwtKeyId;
-
-
         this.jwtPrivateKey = jwtPrivateKey;
         this.jwtPublicKey = jwtPublicKey;
     }
@@ -120,6 +118,8 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/users").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/auth/jwks").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
                 .anyRequest().authenticated()
         ).csrf(AbstractHttpConfigurer::disable);
