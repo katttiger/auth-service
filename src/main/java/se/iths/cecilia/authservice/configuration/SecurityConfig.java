@@ -55,7 +55,6 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-
     }
 
     public SecurityConfig(
@@ -124,16 +123,18 @@ public class SecurityConfig {
     //TODO: The endpoints in the requestmatchers will need to be added when they are finished to specify what the person can and cannot do.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
-        http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/error").permitAll()
-                .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/users").permitAll()
-                .requestMatchers(HttpMethod.POST, "/users").permitAll()
-                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/auth/jwks").permitAll()
-                .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
-                .anyRequest().permitAll()
-        ).csrf(AbstractHttpConfigurer::disable);
+
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/users").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/auth/jwks").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
+                        .anyRequest().permitAll()
+                ).csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
 
