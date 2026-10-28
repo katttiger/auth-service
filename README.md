@@ -27,9 +27,7 @@ CI/CD Workflow: Java CI with Maven.
 ## Startup
 
 **In the terminal**
-
-Windows: mvnw.comd spring-boot:run
-
+Windows: mvnw.cmd spring-boot:run
 macOS: ./mvnw spring-boot:run
 
 **IntelliJ IDE**
