@@ -8,8 +8,11 @@ project to create a webshop (link below to the related programs and their github
 ## Technical specification
 
 Techniques: Java JDK 17, Maven, Spring Boot Security, Spring Boot REST Controller, Spring Boot JPA Repository, JDBC.
+
 Database: PostgreSQL on Neon.com.
+
 Port: (localhost): 9000.
+
 CI/CD Workflow: Java CI with Maven.
 
 ## Environment variables
@@ -36,7 +39,9 @@ macOS: ./mvnw spring-boot:run
 ## Related microservices
 
 Product-service: https://github.com/Joajak92/product-service
+
 Order-service: https://github.com/klasen98/projekt-order-service
+
 E-mail-service: https://github.com/joel-schou/email-service
 
 Gateway-service: https://github.com/joel-schou/gateway-service
