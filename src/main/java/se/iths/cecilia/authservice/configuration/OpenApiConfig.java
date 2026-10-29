@@ -9,6 +9,9 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * OpenAPIConfig allows the use of JSON-web token (JWT) to be sent to API and swagger for testing  {@link se.iths.cecilia.authservice.configuration.SecurityConfig} for implementation
+ */
 @Configuration
 public class OpenApiConfig {
 

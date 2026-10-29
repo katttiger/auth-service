@@ -21,6 +21,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Service for authentication for user using the built-in AuthenticationManager and JWT.
+ * Responsible for checking that the JWT is not expired.
+ *
+ */
 @Service
 public class AuthService {
 

@@ -11,6 +11,9 @@ import se.iths.cecilia.authservice.entity.User;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * CustomUserDetails provides a custom UserDetails profile for the Security Configuration {@link se.iths.cecilia.authservice.configuration.SecurityConfig} for implementation
+ */
 @Getter
 @Setter
 public class CustomUserDetails implements UserDetails {

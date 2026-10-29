@@ -14,6 +14,12 @@ import se.iths.cecilia.authservice.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service for CRUD-endpoints in database for user {@link se.iths.cecilia.authservice.entity.User}.
+ * Responsible for checking that the user in the database has the correct format.
+ * Uses a mapper to convert DTOs upon request and response from API {@link se.iths.cecilia.authservice.mapper.UserMapper}
+ *
+ */
 @Service
 @RequiredArgsConstructor
 public class UserService {

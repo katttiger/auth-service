@@ -14,6 +14,10 @@ import se.iths.cecilia.authservice.service.AuthService;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * REST-controller for login of user with the help of JWT and to keep user logged in when page in frontend is refreshed.
+ *
+ */
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor

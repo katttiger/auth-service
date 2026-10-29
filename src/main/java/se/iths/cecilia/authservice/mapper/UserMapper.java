@@ -5,6 +5,10 @@ import se.iths.cecilia.authservice.dto.UserRequestDto;
 import se.iths.cecilia.authservice.dto.UserResponseDto;
 import se.iths.cecilia.authservice.entity.User;
 
+/***
+ * Mapper between the DTOs in {@link se.iths.cecilia.authservice.dto}. Implements {@link se.iths.cecilia.authservice.mapper.UserMapperInterface}
+ * */
+
 @Component
 public class UserMapper implements UserMapperInterface {
     @Override
