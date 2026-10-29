@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Entity that stores information about user.
+ *
+ */
 @Entity
 @Table(name = "users")
 @Getter
@@ -28,5 +32,5 @@ public class User {
 
     @Column(name = "role", nullable = false)
     private String role;
-    
+
 }

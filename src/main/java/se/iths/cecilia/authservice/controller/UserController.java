@@ -11,6 +11,11 @@ import se.iths.cecilia.authservice.service.UserService;
 
 import java.util.List;
 
+
+/**
+ * REST-controller with CRUD-endpoints for users.
+ *
+ */
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor

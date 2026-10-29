@@ -37,10 +37,19 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
 import java.util.Base64;
 
+/**
+ * SecurityConfiguration provides a custom security configuration.
+ * This configration adds the use of JSON Web Tokens (JWT) to identify a user upon login.
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    /**
+     * jwtPublicKey and jwtPrivateKey are declared here in order for the tests to pass and the build to complete.
+     *
+     */
     private final UserRepository userRepository;
     private final String jwtPublicKey;
     private final String jwtPrivateKey;
